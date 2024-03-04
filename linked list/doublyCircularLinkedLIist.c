@@ -414,7 +414,8 @@ LIST\n10.REVERSE THE LIST\n11.CREATE THE COPY\n");
                   scanf("%d",&value); 
                  if(value==-1) 
                   break; 
-                 create_order_list(p,value);   
+                 create_order_list(p,value); 
+                 break;
             }    
         case 10: 
              reverse(list); 
