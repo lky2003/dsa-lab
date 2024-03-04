@@ -2,21 +2,6 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
-#include<math.h>
-
-  void strrev (char string [])
-{
-    int len = strlen(string);
-    int i;
-    int j = len -1;
-    char c;
-    for (i=0;i<ji++)
-        {
-            c = string[i] ;
-            string [i]= string[j];
-            string [j] = c;
-        }
-}
 //Function to check Stack Precedence
 int stackprec(char symbol)
 {
@@ -51,8 +36,19 @@ int inprec(char symbol)
         default : return 7;
     }
 }
-//Function to convert Infix to Prefix Expression
-void infixtoprefix(char infix[], char prefix[])
+void strev(char *str)
+{
+    
+    // pointer to start and end at the string
+    int i = 0;
+   int length = strlen(str);
+for (i = 0; i < length / 2; i++) {
+char temp = str[i];
+str[i] = str[length - i - 1];
+str[length - i - 1] = temp;
+
+    }
+}void infixtoprefix(char infix[], char prefix[])
 {
     char S[30]; //Stack to store the Expression
     int i=0; //Index for Infix Expression
@@ -60,7 +56,7 @@ void infixtoprefix(char infix[], char prefix[])
     int top=-1; //Initializing Empty Stack
     S[++top] = '#';
     char symbol;
-    strrev(infix);
+    strev(infix);
     for(i=0;i<strlen(infix);i++)
     {
         symbol = infix[i];
@@ -83,13 +79,13 @@ void infixtoprefix(char infix[], char prefix[])
         j++;
     }
     prefix[j]='\0';
-    strrev(prefix);
+    strev(prefix);
 }
 //Function to Evaluate Prefix Expression
 void prefixevaluate(char prefix[])
 {
     int i,op1,op2,res;
-    strrev(prefix);
+    strev(prefix);
     int Stack[10]; //Stack to store Operands
     int top=-1; //Initializing Empty Stack
     char ch;
@@ -119,10 +115,6 @@ void prefixevaluate(char prefix[])
                 case '*' : res = op1 * op2;
                            break;
                 case '%' : res = op1 % op2;
-                           break;
-                case '^' :
-
-                case '$' : res = pow(op1,op2);
                            break;
                 default: printf("Invalid Operator\n");
                 }
@@ -156,6 +148,6 @@ void main()
         case 4 : printf("!! THANK YOU !!\n");
                  exit(0);
         default: printf("Invalid Choice\n");
-        }
-    }
+        }
+    }
 }
