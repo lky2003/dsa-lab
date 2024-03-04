@@ -2,6 +2,21 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include<math.h>
+
+  void strrev (char string [])
+{
+    int len = strlen(string);
+    int i;
+    int j = len -1;
+    char c;
+    for (i=0;i<ji++)
+        {
+            c = string[i] ;
+            string [i]= string[j];
+            string [j] = c;
+        }
+}
 //Function to check Stack Precedence
 int stackprec(char symbol)
 {
@@ -104,6 +119,10 @@ void prefixevaluate(char prefix[])
                 case '*' : res = op1 * op2;
                            break;
                 case '%' : res = op1 % op2;
+                           break;
+                case '^' :
+
+                case '$' : res = pow(op1,op2);
                            break;
                 default: printf("Invalid Operator\n");
                 }
